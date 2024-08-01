@@ -1,112 +1,103 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, {useState} from 'react';
+import {Text, View, Button, StyleSheet, TextInput} from 'react-native';
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View>
+      <Text style={{fontSize: 50}}>Qavi SHaikh</Text>
+      {/* <Text style={{fontSize: 30}}>First React Native App</Text>
+      <Text style={{fontSize: 30}}>Digital Web Creations</Text>
+      <Text style={Styles.textBox}>Home Doctor</Text>
+      <Button title="Send"></Button>
+      <Text>Components</Text> */}
+      <Inp />
     </View>
   );
 };
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+const Inp = () => {
+  const [name, setName] = useState('');
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <View>
+      <Text style={{fontSize: 50, color: 'red'}}>Handle Input</Text>
+      <Text style={{fontSize: 30, color: 'blue'}}>{name}</Text>
+      <TextInput
+        style={Styles.input}
+        placeholder="ENter Your Name"
+        value={name}
+        onChangeText={text => setName(text)}
+      />
+      <Button title="Cancel" onPress={() => setName('')}></Button>
+    </View>
+  );
+};
+const Styles = StyleSheet.create({
+  textBox: {
+    color: 'white',
+    backgroundColor: 'red',
+    fontSize: 30,
+    height: 100,
+    textAlignVertical: 'center',
+    marginTop: 10,
+    textAlign: 'center',
+  },
+  input: {
+    fontSize: 20,
+    color: 'blue',
+    borderColor: 'blue',
+    borderWidth: 2,
+    margin: 10,
+  },
+});
+
+const StateP = () => {
+  const [name, setName] = useState('Qavi');
+  const testUpdate = () => {
+    setName('Hussain');
+  };
+  return (
+    <View>
+      <Text style={{fontSize: 30}}>UseState Hook</Text>
+      <Text style={{fontSize: 20}}>{name}</Text>
+      <Button title="Update State" color={'red'} onPress={testUpdate}></Button>
+    </View>
   );
 };
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+const Firstcomp = () => {
+  const fruit = val => {
+    console.warn(val);
+  };
+  return (
+    <View>
+      <Text>BUtton On Press Events</Text>
+      <Button title="On Press" color={'red'} onPress={fruit}></Button>
+      <Button
+        title="On Press with Parameter"
+        color={'green'}
+        onPress={() => fruit('Hello Qavi')}></Button>
+    </View>
+  );
+};
+
+const Hashir = () => {
+  return (
+    <View>
+      <Text style={{fontSize: 20}}>Name: Hashir SHaikh</Text>
+      <Text style={{fontSize: 20}}>Age: 18</Text>
+      <Text style={{fontSize: 20}}>Email: hashir@gmail.com</Text>
+    </View>
+  );
+};
+
+const Raqeeb = () => {
+  return (
+    <View>
+      <Text style={{fontSize: 20}}>Name: Raqeeb</Text>
+      <Text style={{fontSize: 20}}>Age: 21</Text>
+      <Text style={{fontSize: 20}}>Email: raqeeb1012@gmail.com</Text>
+    </View>
+  );
+};
 
 export default App;
